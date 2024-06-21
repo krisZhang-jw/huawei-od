@@ -11,3 +11,21 @@
  * 例如：
  * 6
  */
+const str = '93,95,97,100,102,123,155'
+const target = 110
+
+function binarySearch(nums, target) {
+    let left = 0, right = nums.length -1, mid = 0
+    while(left <= right) {
+        if (nums[middle] < target) {
+            left = mid + 1
+        } else if (nums[middle] > target) {
+            right = mid - 1
+        } else {
+            return mid
+        }
+    }
+    return nums[mid] > target ? mid : mid + 1
+}
+
+return binarySearch(str.split(','), target) + 1
