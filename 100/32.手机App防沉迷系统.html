@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const arr = [
+        ["App1", 1, "11:00", "10:00"],
+        ["App2", 2, "09:10", "09:30"],
+      ];
+      const time = "09:50";
+
+      const hasOverlap = (x, y) => {
+        if (x.start > y.end || x.end < y.start) {
+          return false;
+        }
+        return true;
+      };
+
+      for (let i = 0; i < arr.length; i++) {
+        const l1 = arr[i][1];
+        const s1 = arr[i][2];
+        const e1 = arr[i][3];
+        if (s1 >= e1) arr[i].push('min')
+        for (let j = i + 1; j < arr.length; j++) {
+          const l2 = arr[j][1];
+          const s2 = arr[j][2];
+          const e2 = arr[j][3];
+          if (s2 >= e2) arr[j].push('min')
+          if (hasOverlap({ start: s1, end: e1 }, { start: s2, end: e2 })) {
+            l1 > l2 ? arr[j].push("min") : arr[i].push("min");
+          }
+        }
+      }
+      console.log(arr)
+      const newArr = arr.filter(item => item.length === 4)
+      const lastArr = newArr.filter(item => item[2] <= time && item[3] >= time).map(item=> item[0])
+      if (lastArr.length) {
+        console.log(lastArr[0])
+      } else {
+        console.log('NA')
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
