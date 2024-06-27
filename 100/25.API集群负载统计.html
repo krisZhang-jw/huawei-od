@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const count = 5;
+      const arr = [
+        "/huawei/computing/no/one",
+        "/huawei/computing",
+        "/huawei",
+        "/huawei/cloud/no/one",
+        "/huawei/wireless/no/one",
+      ];
+      const index = 4;
+      const str = "two";
+
+      let ans = 0;
+      arr.forEach((item) => {
+        let newArr = item.split("/");
+        ans += newArr[index] === str ? 1 : 0
+      });
+
+      console.log(ans)
+    </script>
+  </head>
+  <body></body>
+</html>

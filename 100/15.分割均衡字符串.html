@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //   const rl = require('readline').createInterface({ input: stdin })
+      //   const iter = rl[Symbol.asyncIterator]()
+      //   const readline = async() => (await iter.next()).value
+
+      //   const str = await readline()
+
+      const str = "XXYYXYXYXXXXYYYY";
+      let countX = 0;
+      let countY = 0;
+      let count = 0;
+      for (let c of str) {
+        if (c === "X") countX++;
+        if (c === "Y") countY++;
+        if (countX === countY) {
+          count++;
+        }
+      }
+      console.log("count ==== ", count);
+    </script>
+  </head>
+  <body></body>
+</html>

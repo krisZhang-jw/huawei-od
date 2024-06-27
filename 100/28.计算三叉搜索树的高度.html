@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const nums = [5000, 2000, 5000, 8000, 1800];
+      class TreeNode {
+        constructor(val) {
+          this.val = val; // 节点值
+          this.height = undefined; // 节点所在高度
+          this.left = null; // 左子树
+          this.mid = null; // 中子树
+          this.right = null; // 右子树
+        }
+      }
+      class Tree {
+        constructor() {
+          this.root = null; // 树的根节点
+          this.height = 0;
+        }
+        add(val) {
+          const node = new TreeNode(val);
+
+          if (this.root === null) {
+            // 如果树是空的，则当前创建的节点作为根节点
+            node.height = 1;
+            this.root = node;
+            this.height = 1;
+          } else {
+            let cur = this.root;
+            while (true) {
+              node.height = cur.height + 1;
+              this.height = Math.max(node.height, this.height);
+
+              if (val < cur.val - 500) {
+                if (cur.left == null) {
+                  cur.left = node;
+                  break;
+                } else {
+                  cur = cur.left;
+                }
+              } else if (val > cur.val + 500) {
+                if (cur.right == null) {
+                  cur.right = node;
+                  break;
+                } else {
+                  cur = cur.right;
+                }
+              } else {
+                if (cur.mid == null) {
+                  cur.mid = node;
+                  break;
+                } else {
+                  cur = cur.mid;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      const tree = new Tree();
+      for (let i = 0; i < nums.length; i++) {
+        tree.add(nums[i]);
+      }
+
+      console.log(tree.height);
+    </script>
+  </head>
+  <body></body>
+</html>

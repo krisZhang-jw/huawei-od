@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //   const rl = require('readline').createInterface({ input: stdin })
+      //   const iter = rl[Symbol.asyncIterator]()
+      //   const readline = async() = (await iter.next()).value
+
+      //   const studentNumber = [...readline().split(' ')][0]
+      //   const courseNumber =  [...readline().split(' ')][1]
+
+      //   const courseArr = [...readline().split(' ')]
+
+      //   const studentArr = []
+      //   const scoreArr = []
+      //   const arr = []
+
+      //   for (let i = 0; i< studentNumber;i++) {
+      //     arr.push([...readline().split(' '))
+      //     studentArr.push([...readline().split(' ')][0])
+      //     scoreArr.push([...readline().split(' ')].shift())
+      //   }
+
+      //   const course = readline()
+
+      const courseArr = ["yuwen", "shuxue"];
+      let arr = [
+        ["fangfang", 95, 90],
+        ["xiaohua", 88, 95],
+        ["minmin", 90, 95],
+      ];
+      const studentArr = ["zangfang", "xiaohua", "minmin"];
+      const scoreArr = [
+        ["95", "90"],
+        ["88", "95"],
+        ["90", "95"],
+      ];
+      const course = "";
+
+      // 存在学科
+      const courseIndex = courseArr.indexOf(course);
+      console.log("courseIndex === ", courseIndex);
+      if (courseIndex > -1) {
+        arr.sort((a, b) => {
+          const aCourse = parseInt(a[courseIndex + 1]);
+          const bCourse = parseInt(b[courseIndex + 1]);
+          const aName = a[0];
+          const bName = b[0];
+          return aCourse === bCourse ? aName - bName : bCourse - aCourse;
+        });
+      } else {
+        arr.sort((a, b) => {
+          const aName = a[0];
+          const bName = b[0];
+          const aCourse = a.reduce((x, y) => parseInt(getNum(x)) + parseInt(getNum(y)));
+          const bCourse = b.reduce((x, y) =>parseInt(getNum(x)) + parseInt(getNum(y)));
+
+          console.log(aName, aCourse, bName, bCourse);
+          return aCourse === bCourse ? aName - bName : bCourse - aCourse;
+        });
+      }
+
+      function getNum(x) {
+        return typeof x === 'number' ? x : 0
+      }
+      console.log(arr.map((item) => item[0]));
+    </script>
+  </head>
+  <body></body>
+</html>

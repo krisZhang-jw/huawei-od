@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //   const rl = require('readline').createInterface({ input: stdin })
+      //   const iter = rl[Symbol.asyncIterator]()
+      //   const readline = async() => (await iter.next()).value
+
+      //   const n = await readline()
+      //   const arr = await readline().split(' ').map(Number)
+      //   const count = await readline()
+
+      const n = 5;
+      const arr = [1, 2, 3, 4, 5];
+      const count = 3;
+
+      const obj = {};
+      for (let i = 0; i < arr.length; i++) {
+        console.log(obj[arr[i]]);
+        if (obj[arr[i]] !== undefined) {
+          obj[arr[i]] += 1;
+        } else {
+          obj[arr[i]] = 1;
+        }
+      }
+      console.log(obj);
+      const newArr = [];
+      for (let c in obj) {
+        console.log(obj[c]);
+        if (obj[c] >= count) {
+          newArr.push(parseInt(c));
+        }
+        console.log(newArr);
+        if (newArr.length) {
+          console.log(newArr.length);
+          newArr.sort();
+          newArr.forEach((item) => console.log(item));
+        } else {
+          console.log(0);
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

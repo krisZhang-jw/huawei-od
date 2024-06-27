@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // const rl = require('readline').createInterface({ input: process.stdin })
+      // const iter = rl[Symbol.asyncIterator]()
+      // const readline = async() => (await iter.next()).value
+      // const str = readline()
+
+      const str = "ABC<c89%000<";
+
+      const stack = [];
+      let lower = 0;
+      let upper = 0;
+      let number = 0;
+      let no_letter_number = 0;
+      for (let c of str) {
+        if (c == "<") {
+          stack.length && stack.pop();
+        } else {
+          if (c >= "a" && c <= "z") {
+            lower++;
+          } else if (c >= "A" && c <= "Z") {
+            upper++;
+          } else if (c >= 0 && c <= 9) {
+            number++;
+          }
+          {
+            no_letter_number++;
+          }
+          stack.push(c);
+        }
+      }
+      const newStr = stack.join("");
+      console.log(stack, newStr);
+      const re =
+        stack.length >= 8 && lower && upper && number && no_letter_number;
+
+      console.log( stack.length >= 8 && lower)
+      console.log( stack.length >= 8 && lower && upper)
+      console.log( stack.length >= 8 && lower && upper && number)
+      console.log(stack.length >= 8 && lower && upper && number && no_letter_number)
+      
+
+        console.log(newStr, !!re)
+    </script>
+  </head>
+  <body></body>
+</html>

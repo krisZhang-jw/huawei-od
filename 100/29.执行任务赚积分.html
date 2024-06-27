@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const n = 4;
+      const t = 3;
+      const arr = [
+        [1, 2],
+        [2, 3],
+        [2, 4],
+        [3, 5],
+      ];
+
+      let ans = 0;
+      console.log(getAns());
+      function getAns() {
+        if ((t === 0)) {
+          return 0;
+        } else {
+          for (let i = 1; i <= t; i++) {
+            const filterArr = arr.filter(item => item[0] === i).map(item => item[1])
+            console.log(filterArr)
+            if (filterArr.length) {
+                ans += Math.max(...filterArr)
+            }
+          }
+          return ans
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

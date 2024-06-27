@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const arr = ['MU1087','CA9908','3U0045','FM1703'];
+
+      console.log(
+        arr.sort((a, b) => {
+          let aName = a.slice(0, 2);
+          let aNumber = a.slice(2);
+          let bName = b.slice(0, 2);
+          let bNumber = b.slice(2);
+          return aName === bName ? aNumber - bNumber : compare(aName, bName);
+        })
+      );
+      function compare(x, y) {
+        if (x === y) {
+          return 0;
+        } else {
+          return x > y ? 1 : -1;
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

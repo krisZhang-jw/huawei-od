@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //   const rl = require("readline").createInterface({ input: process.stdin });
+      //   const iter = rl[Symbol.asyncIterator]();
+      //   const readline = async () => (await iter.next()).value;
+      //   //   宝石总数量
+      //   const n = readline();
+      //   //   宝石价格数组
+      //   const arr = [];
+      //   for (let i = 1; i < n; i++) {
+      //     arr.push(readline());
+      //   }
+      //   //   拥有的钱
+      //   const money = readline();
+
+      const n = 8;
+      const arr = [8, 4, 6, 3, 1, 2, 4, 7];
+      const money = 10;
+
+      //   let l = 0;
+      //   let r = 0;
+      let sum = 0;
+      let ans = 0;
+      //   while (r < n) {
+      //     if (sum + arr[r] <= money) {
+      //         r++
+      //     } else {
+      //         sum = 0
+      //         l++
+      //         ans = Math.max(ans, r-l)
+      //         while(l < r) {
+
+      //         }
+      //     }
+      //   }
+
+    //   debugger
+      for (let i = 0; i < n; i++) {
+        for (let j = i; j < n; j++) {
+          sum += arr[j];
+          ans = Math.max(ans, j - i);
+          if (sum > money) {
+            sum = 0;
+            break;
+          }
+        }
+      }
+      console.log(ans);
+    </script>
+  </head>
+  <body></body>
+</html>

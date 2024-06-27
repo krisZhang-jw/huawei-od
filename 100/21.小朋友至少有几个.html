@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let nums = [2, 2, 3, 3, 4, 5, 66];
+      a();
+      b();
+
+      function a() {
+        nums = Array.from(new Set(nums));
+        console.log(nums.reduce((a, b) => a + b) + nums.length);
+      }
+      function b() {
+        //         const rl = require("readline").createInterface({ input: process.stdin });
+        //   var iter = rl[Symbol.asyncIterator]();
+        //   const readline = async () => (await iter.next()).value;
+
+        // void (async function () {
+        //   const nums = (await readline()).split(" ").map(Number);
+        const cnts = {};
+
+        // num是反馈，cnts[num]是给出相同反馈的（小朋友）数量
+        for (let num of nums) {
+          // ?? 是es6高级语法，如果??左边是null或undefined，则返回??右边
+          cnts[num] = (cnts[num] ?? 0) + 1;
+        }
+
+        // ans 记录题解
+        let ans = 0;
+
+        Object.keys(cnts).forEach((key) => {
+          // key是反馈，假设某小朋友反馈有key个人和自己一个小区，那么该小区总人数为total = key+1
+          const total = parseInt(key) + 1;
+          ans += Math.ceil(cnts[key] / total) * total;
+        });
+
+        console.log(ans);
+        // })();
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

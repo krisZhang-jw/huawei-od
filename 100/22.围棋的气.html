@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const arr = new Array(21).fill(0).map(() => new Array(21).fill(0));
+      for (let i = 0; i < 21; i++) {
+        for (let j = 0; j < 21; j++) {
+          arr[0][j] = arr[20][j] = arr[i][0] = arr[i][20] = 1;
+        }
+      }
+      for (let i = 0;i<arr.length;i++) {
+        console.log(arr[i].join(' '))
+      }
+
+      const black = [0, 5, 8, 9, 9, 10];
+      const white = [5, 0, 9, 9, 9, 8];
+      for (let i = 0; i < black.length; i = i + 2) {
+        arr[black[i] + 1][black[i + 1] + 1] = "b";
+      }
+      for (let i = 0; i < white.length; i = i + 2) {
+        arr[white[i] + 1][white[i + 1] + 1] = "w";
+      }
+
+      console.log(arr)
+
+      let blackSum = 0;
+      let whiteSum = 0;
+      let blackArr = [];
+      let whiteArr = [];
+      for (let i = 0; i < 21; i++) {
+        for (let j = 0; j < 21; j++) {
+          if (arr[i][j] === "b") {
+            const { step, temp } = getResult(arr, i, j);
+            blackSum += step;
+            blackArr = blackArr.concat(temp);
+          }
+          if (arr[i][j] === "w") {
+            const { step, temp } = getResult(arr, i, j);
+            whiteSum += step;
+            whiteArr = whiteArr.concat(temp);
+          }
+        }
+      }
+      console.log(unique(blackArr).length, unique(whiteArr).length);
+      function getResult(arr, x, y) {
+        let step = 0;
+        let temp = [];
+        if (arr[x][y - 1] == 0) {
+          step++;
+          temp.push(x + "" + (y - 1));
+        }
+        if (arr[x - 1][y] == 0) {
+          step++;
+          temp.push(x - 1 + "" + y);
+        }
+
+        if (arr[x + 1][y] == 0) {
+          step++;
+          temp.push(x + 1 + "" + y);
+        }
+        if (arr[x][y + 1] == 0) {
+          step++;
+          temp.push(x + "" + (y + 1));
+        }
+        return { step, temp };
+      }
+      function unique(arr) {
+        return Array.from(new Set(arr));
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const bricks = [30, 12, 25, 8, 19];
+      getResult(bricks);
+      function getResult(bricks) {
+        let ans = 0;
+        if (bricks.length > 8) {
+          console.log(-1);
+        } else {
+          let max = Math.max(...bricks);
+          let min = 1;
+          while (min <= max) {
+            let mid = (min + max) >> 1;
+            if (check(mid, 8, bricks)) {
+              ans = mid;
+              max = mid - 1;
+            } else {
+              min = mid + 1;
+            }
+          }
+          console.log(ans);
+        }
+      }
+      function check(mid, hour, bricks) {
+        let cost = 0;
+        for (let brick of bricks) {
+          cost += Math.ceil(brick / mid);
+        }
+        return cost <= 8 ? true : false;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

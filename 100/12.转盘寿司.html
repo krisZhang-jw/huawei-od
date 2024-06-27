@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //   const rl = require('readline').createInterface({ input: stdin })
+      //   const iter = rl[Symbol.asyncIterator]()
+      //   const readline = async() => (await iter.next()).value
+
+      //   const arr = [...await readline().split(' ')].map(Number)
+
+      const arr = [3, 14, 15, 6, 5];
+
+      const arrRe = [...arr];
+      const n = arr.length;
+    //   debugger;
+      for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < 2 * n; j++) {
+          let arr_j = arr[j % n];
+          if (arr[i] > arr_j) {
+            arrRe[i] += arr_j;
+            break;
+          }
+        }
+      }
+      console.log(arrRe);
+    </script>
+  </head>
+  <body></body>
+</html>

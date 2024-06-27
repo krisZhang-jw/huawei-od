@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // const rl = require('readline').createInterface({ input: stdin })
+      // const iter = rl[Symbol.asyncIterator]()
+      // const readline = async() => (await iter.next()).value
+
+      // const [n, m] = await readline().split(' ').map(Number)
+
+      const n = 100;
+      const m = 12;
+      const k = Math.ceil(n / m);
+
+      let x = 0;
+      let y = 0;
+      let step = 1;
+
+      const arr = new Array(m).fill("*").map(() => new Array(k).fill("*"));
+      console.log(arr);
+// debugger
+      while (step <= n) {
+        while (y < k && arr[x][y] === "*" && step <= n) arr[x][y++] = step++;
+        x += 1;
+        y -= 1;
+        while (x < m && arr[x][y] === "*" && step <= n) arr[x++][y] = step++;
+        x -= 1;
+        y -= 1;
+        while (y >= 0 && arr[x][y] === "*" && step <= n) arr[x][y--] = step++;
+        x -= 1;
+        y += 1;
+        while (x >= 0 && arr[x][y] === "*" && step <= n) arr[x--][y] = step++;
+        x += 1;
+        y += 1;
+      }
+      console.log(arr)
+
+      for (let i = 0;i<arr.length;i++) {
+        console.log(arr[i].join(' '))
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

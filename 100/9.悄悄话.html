@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const rl = require('readline').createInterface({ input: process.stdin })
+      const iter = rl[Symbol.asyncIterator]()
+      const readline = async() => (await iter.next()).value
+
+      const arr = (await readline().split(" ").map(Number))
+
+      let ans = 0;
+      const queue = [0]
+      while(queue.length > 0) {
+          const p = queue.shift(0)
+
+          const l = 2*p + 1
+          const r = 2*p + 2
+
+          const isExitLeftChild = l < arr.length && arr[l] !== -1
+          const isExitRightChild = r < arr.length && arr[r] !== -1
+
+          if (isExitLeftChild) {
+            arr[l] += arr[p]
+            queue.push(l)
+          }
+
+     
+          if (isExitRightChild) {
+            arr[r] += arr[p]
+            queue.push(r)
+          }
+
+          if (!isExitLeftChild && !isExitRightChild) {
+            ans = Math.max(ans, arr[p])
+          }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

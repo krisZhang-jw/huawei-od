@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //   const rl = require('readline').createInterface({ input: process.stdin })
+      //   const iter = rl[Symbol.asyncIterator]()
+      //   const readline = async() => (await iter.next()).value
+
+      //   const arr = [...await readline()]
+      const arr = [0, 0,0,0, 1, 0, 0, 0, 1, 0, 1, 0, 0];
+
+      let ans = 0;
+
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == "0") {
+          let isLeftEmpty = arr[i - 1] == "0" || i == 0;
+          let isRightEmpty = arr[i + 1] == "0" || i == arr.length - 1;
+          if (isLeftEmpty && isRightEmpty) {
+            ans++;
+            arr[i] = 1;
+          }
+        }
+      }
+
+      console.log(ans);
+    </script>
+  </head>
+  <body></body>
+</html>

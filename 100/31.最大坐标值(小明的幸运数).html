@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const n = 5;
+      const m = -5;
+      const arr = [-5, 1, 6, 0, -7];
+
+      getError(n);
+      getError(m);
+      function getError(num) {
+        if (num < 1 || num > 100) {
+          return 12345;
+        }
+      }
+
+      const newArr = [0];
+      arr.reduce((sum, item) => {
+        getError(item);
+        console.log(sum, item, sum + item);
+
+        if (item === m) {
+          const originItem = item;
+          item = Math.abs(item) + 1;
+          if (originItem < 0) {
+            item = -item;
+          }
+        }
+        sum += item;
+        newArr.push(sum);
+        return sum;
+      }, 0);
+
+      console.log(newArr);
+      console.log(Math.max(...newArr));
+    </script>
+  </head>
+  <body></body>
+</html>

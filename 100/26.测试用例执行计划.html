@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const N = 3;
+      const M = 3;
+      const FArr = [3, 1, 5];
+      const PArr = [
+        [1, 2, 3],
+        [1, 2, 3],
+        [1, 2, 3],
+      ];
+
+      const TArr = new Array(M).fill(0);
+      getSum(PArr, FArr);
+      function getSum(PArr, FArr) {
+        let sum = 0;
+        for (let i = 0; i < PArr.length; i++) {
+          for (let j = 0; j < PArr[i].length; j++) {
+            const item = PArr[i][j];
+            console.log("tpf ==== " + FArr[item - 1]);
+            sum += FArr[item - 1];
+          }
+          TArr[i] = sum;
+          sum = 0;
+        }
+        console.log(sum, TArr);
+        const newArr = TArr.map((item, index) => {
+          return {
+            item,
+            index: index + 1,
+          };
+        });
+        newArr.sort((a, b) => {
+          return a.item === b.item ? a.index - b.index : b.item - a.item;
+        });
+
+        const nnewArr = newArr.map((item) => {
+          return item.index;
+        });
+        console.log(nnewArr.join(","));
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
