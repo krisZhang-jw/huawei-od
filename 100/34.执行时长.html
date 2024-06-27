@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const count = 3;
+      const len = 5;
+      const arr = [1, 2, 3, 4, 15];
+
+      // const res = arr.reduce((sum, item) => {
+      //   if (item <= count) {
+      //     sum += item;
+      //   }
+      //   return sum;
+      // }, 0);
+      // console.log(res)
+
+      const newArr = [];
+      arr.reduce((rest, item) => {
+        item += rest;
+        rest = item > count ? item - count : 0;
+        console.log(rest)
+        newArr.push(rest);
+        return rest;
+      }, 0);
+
+      const last = newArr[newArr.length - 1];
+      const re = Math.ceil(last / count);
+
+      console.log(newArr);
+      console.log(newArr.length + re);
+    </script>
+  </head>
+  <body></body>
+</html>
