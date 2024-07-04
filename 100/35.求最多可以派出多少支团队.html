@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const arr = [1, 2, 3, 4, 6, 7];
+      const count = 7;
+
+      const bigArr = arr.filter((item) => item >= count);
+
+      console.log("length ==== ", bigArr.length);
+      const restArr = arr.filter((item) => item < count);
+      const re = 0;
+
+      let step = 0;
+      hasCount(restArr[0], restArr);
+
+      function hasCount(c, arr) {
+        const index = arr.findIndex((item) => item === c);
+        arr.splice(index, 1);
+        const filterArr = arr.filter((item) => item + c >= count);
+        console.log(c, filterArr);
+        if (!filterArr.length) {
+          let index = arr;
+        }
+        const min = Math.min(...filterArr);
+        const minIndex = arr.findIndex((item) => item === min);
+        arr.splice(minIndex, 1);
+        step++;
+        if (arr.length >= 2) hasCount(restArr[0], restArr);
+      }
+
+      console.log(bigArr.length + step);
+    </script>
+  </head>
+  <body></body>
+</html>
